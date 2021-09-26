@@ -26,7 +26,6 @@ namespace Agenda.DAL.Test
                 Id = Guid.NewGuid(),
                 Nome = "Marcos"
             };
-            
 
             //Executa
             _contatos.Adicionar(contato);
@@ -35,12 +34,10 @@ namespace Agenda.DAL.Test
             Assert.True(true);
         }
 
-
         //ObterContatoTest
         [Test]//indica o método a ser testado
         public void ObterContatoTest()
         {
-
             //Monta
             var contato = new Contato()
             {
@@ -56,10 +53,7 @@ namespace Agenda.DAL.Test
             //Verifica
             Assert.AreEqual(contato.Id,resultado.Id);//Verifica se o nome incluido é igual ao retornado com o ID
             Assert.AreEqual(contato.Nome, resultado.Nome);
-
-
         }
-
 
         [Test]
         public void ObterTodosOsContatosTest()
@@ -79,12 +73,10 @@ namespace Agenda.DAL.Test
             Assert.AreEqual(contato1.Nome, contatoResultado.Nome);
         }
 
-
         [TearDown]// Indica que o método será executado depois de cada método de teste
         public void TearDown()
         {
             _contatos = null;
         }
-
     }
 }
