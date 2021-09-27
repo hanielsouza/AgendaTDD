@@ -22,11 +22,6 @@ namespace Agenda.DAL
             using (var con = new SqlConnection(_strCon))
             {
                 con.Execute("insert into Contato (Id,Nome) values(@Id,@Nome)",contato);
-
-                con.Open();
-                string sql = string.Format("insert into Contato (Id,Nome) values('{0}','{1}')", contato.Id, contato.Nome);
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.ExecuteNonQuery();
             }
         }
 

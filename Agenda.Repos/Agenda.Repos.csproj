@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D946DDA7-017F-456C-968F-88BED08D4DEF}</ProjectGuid>
+    <ProjectGuid>{39D41DAF-189A-47A3-BDA4-EAC212585F29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Agenda.Domain</RootNamespace>
-    <AssemblyName>Agenda.Domain</AssemblyName>
+    <RootNamespace>Agenda.Repos</RootNamespace>
+    <AssemblyName>Agenda.Repos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,10 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contato.cs" />
-    <Compile Include="IContato.cs" />
-    <Compile Include="ITelefone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositorioContatos.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agenda.DAL\Agenda.DAL.csproj">
+      <Project>{88596803-df49-4bf8-a397-fc8925794cd1}</Project>
+      <Name>Agenda.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agenda.Domain\Agenda.Domain.csproj">
+      <Project>{d946dda7-017f-456c-968f-88bed08d4def}</Project>
+      <Name>Agenda.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
