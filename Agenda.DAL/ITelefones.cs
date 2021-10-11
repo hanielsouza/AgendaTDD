@@ -9,6 +9,6 @@ namespace Agenda.DAL
 {
    public interface ITelefones
     {
-        List<ITelefone> ObterTodos(Guid contatoId);
+        List<ITelefone> ObterTodosDoContato(Guid contatoId);
     }
 }
