@@ -20,25 +20,22 @@ namespace Agenda.Repos.Test
             _contatos = new Mock<IContatos>();
             _telefones = new Mock<ITelefones>();
             _repositorioContatos = new RepositorioContatos(_contatos.Object, _telefones.Object);
-
         }
 
         [Test]
         public void DeveSerPossivilObterContatoComListTelefone()
         {
-            Guid telefoneId = Guid.NewGuid();
-            Guid contatoId = Guid.NewGuid();
-            List<ITelefone> lstTelefone = new List<ITelefone>();
-
+            var telefoneId = Guid.NewGuid();
+            var contatoId = Guid.NewGuid();
+            var lstTelefone = new List<ITelefone>();
             //Monta
             //Criar Moq de Icontato
-            Mock<IContato> mContato = IContatoConstr.Um().ComId(contatoId).ComNome("João").Obter();
+            var mContato = IContatoConstr.Um().ComId(contatoId).ComNome("João").Obter();
             mContato.SetupSet(o => o.Telefones = It.IsAny<List<ITelefone>>()).Callback<List<ITelefone>>(p=> lstTelefone = p);
             //moq da função ObterId de Icontatos
             _contatos.Setup(o => o.Obter(contatoId)).Returns(mContato.Object);
             //Cria moq de Itelefones 
-            ITelefone mockTelefone = ITelefoneConstr.Um().Padrao().ComId(telefoneId).ComContatoId(contatoId).Construir();
-
+            var mockTelefone = ITelefoneConstr.Um().Padrao().ComId(telefoneId).ComContatoId(contatoId).Construir();
             //moq da função ObterTodosDoCOntato de ITelefones
             _telefones.Setup(o => o.ObterTodosDoContato(contatoId)).Returns(new List<ITelefone> { mockTelefone });
             //Executa
@@ -53,7 +50,6 @@ namespace Agenda.Repos.Test
             Assert.AreEqual(mockTelefone.Numero, contatoResultado.Telefones[0].Numero);
             Assert.AreEqual(mockTelefone.Id, contatoResultado.Telefones[0].Id);
             Assert.AreEqual(mContato.Object.Id, contatoResultado.Telefones[0].ContatoId);
-
         }
 
         [TearDown]

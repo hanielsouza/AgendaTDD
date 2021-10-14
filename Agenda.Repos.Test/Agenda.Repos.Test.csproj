@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseConstr.cs" />
     <Compile Include="IContatoConstr.cs" />
     <Compile Include="ITelefoneConstr.cs" />
     <Compile Include="RepositorioContatosTest.cs" />
